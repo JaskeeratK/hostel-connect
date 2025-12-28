@@ -1,0 +1,73 @@
+/* Reset + base styling */
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: #f4f6f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Main container look */
+body > * {
+  background: #ffffff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  width: 360px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Heading */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Inputs, select, textarea */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+textarea {
+  resize: none;
+  height: 80px;
+}
+
+/* Submit button */
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #1e4fd8;
+}
+
+/* Status message */
+#status {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+  color: #16a34a;
+}

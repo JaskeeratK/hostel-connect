@@ -1,0 +1,16 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# Firebase private key
+*.json
+
+# Node modules if you ever use npm
+node_modules/
+
+# OS files
+.DS_Store
