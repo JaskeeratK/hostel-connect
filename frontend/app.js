@@ -1,4 +1,4 @@
-const BACKEND_URL = "http://127.0.0.1:8000/process";
+const BACKEND_URL = "https://hostel-connect-4q25.onrender.com/process";
 
 window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("submitBtn").addEventListener("click", async () => {
