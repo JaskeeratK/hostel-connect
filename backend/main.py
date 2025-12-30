@@ -17,7 +17,7 @@ from whatsapp import send_whatsapp
 # -------------------- 🔐 FIRESTORE AUTH (IMPORTANT) --------------------
 
 credentials_info = json.loads(
-    os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")
+    os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 )
 
 credentials = service_account.Credentials.from_service_account_info(
