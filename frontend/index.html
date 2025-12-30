@@ -1,30 +1,259 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hostel Assist</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    body::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      bottom: -150px;
+      left: -150px;
+      border-radius: 50%;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      width: 100%;
+      max-width: 440px;
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2);
+      position: relative;
+      z-index: 1;
+      animation: slideUp 0.5s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: #64748b;
+      font-weight: 400;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 12px;
+      border: 2px solid #e2e8f0;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      background: #f8fafc;
+      color: #1e293b;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+      transform: translateY(-1px);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #94a3b8;
+    }
+
+    textarea {
+      resize: none;
+      height: 110px;
+      font-family: inherit;
+      line-height: 1.6;
+    }
+
+    select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      margin-top: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    #status {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 12px;
+      border-radius: 10px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    #status.success {
+      background: #dcfce7;
+      color: #16a34a;
+      opacity: 1;
+      border: 1px solid #86efac;
+    }
+
+    #status.error {
+      background: #fee2e2;
+      color: #dc2626;
+      opacity: 1;
+      border: 1px solid #fca5a5;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 32px 24px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="card">
+    <div class="header">
+      <h2>Welcome to Connstel</h2>
+      <p class="subtitle">Submit your hostel complaint</p>
+    </div>
 
-<h2>Hostel Complaint</h2>
+    <div class="form-group">
+      <label for="hostel">Student Name</label>
+      <input id="hostel" placeholder="e.g. C-Block" />
+    </div>
 
-<input id="hostel" placeholder="Hostel Name" /><br><br>
-<input id="room" placeholder="Room Number" /><br><br>
+    <div class="form-group">
+      <label for="room">Room Number</label>
+      <input id="room" placeholder="e.g. 205" />
+    </div>
 
-<select id="category">
-  <option>Water</option>
-  <option>Electricity</option>
-  <option>Cleanliness</option>
-  <option>Internet</option>
-  <option>Other</option>
-</select><br><br>
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select id="category">
+        <option>Water</option>
+        <option>Electricity</option>
+        <option>Cleanliness</option>
+        <option>Internet</option>
+        <option>Other</option>
+      </select>
+    </div>
 
-<textarea id="description" placeholder="Describe issue"></textarea><br><br>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" placeholder="Describe the issue in detail..."></textarea>
+    </div>
 
-<button id="submitBtn">Submit</button>
-<p id="status"></p>
+    <button id="submitBtn">Submit Complaint</button>
 
-<script type="module" src="app.js"></script>
+    <p id="status"></p>
+  </div>
 
+  <script type="module" src="app.js"></script>
 </body>
 </html>
