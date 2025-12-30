@@ -54,8 +54,6 @@ async def process_complaint(data: dict):
     Room Number: {data["roomNumber"]}
 
     Return EXACTLY in this format (with labels):
-    - room number: <room number>
-    - category: <category>
     - priority: <Low/Medium/High>
     - short summary: <one line>
 
@@ -75,10 +73,32 @@ async def process_complaint(data: dict):
     registered_number = os.getenv("REGISTERED_NUMBER")  
 
     try:
+        message = f"""
+📢 *New Hostel Complaint*
+
+👤 Student: {data['studentName']}
+🏠 Room: {data['roomNumber']}
+📂 Category: {data['category']}
+
+📝 Issue:
+{data['description']}
+
+Short Summary:
+{ai_result}
+
+⏰ Reported at: {datetime.utcnow().strftime('%d %b %Y, %I:%M %p')} UTC
+
+✅ To update status, reply with one of:
+- DONE 
+- IN PROGRESS 
+- NOT DONE 
+"""
+
         send_whatsapp(
-            f"New Hostel Complaint:\n{data['description']}\n\n{ai_result}",
+            message.strip(),
             to_number=registered_number
         )
+
         db.collection("complaints").document(complaint_id).update({
             "whatsappSent": True
         })
