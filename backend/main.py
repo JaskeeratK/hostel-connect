@@ -16,20 +16,6 @@ from whatsapp import send_whatsapp
 
 # -------------------- 🔐 FIRESTORE AUTH (IMPORTANT) --------------------
 
-<<<<<<< HEAD
-credentials_info = json.loads(
-    os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-)
-
-credentials = service_account.Credentials.from_service_account_info(
-    credentials_info
-)
-
-db = firestore.Client(
-    credentials=credentials,
-    project=credentials_info["project_id"]
-)
-=======
 credentials_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 
 if not credentials_path:
@@ -43,7 +29,6 @@ db = firestore.Client(credentials=credentials,project=credentials.project_id
 )
 
 
->>>>>>> muskan-feature
 
 # ----------------------------------------------------------------------
 
@@ -156,10 +141,6 @@ Short Summary:
     }
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> muskan-feature
 # import os
 # from dotenv import load_dotenv
 # from datetime import datetime
@@ -216,11 +197,8 @@ Short Summary:
 #     Room Number: {data["roomNumber"]}
 
 #     Return EXACTLY in this format (with labels):
-<<<<<<< HEAD
-=======
 #     - room number: <room number>
 #     - category: <category>
->>>>>>> muskan-feature
 #     - priority: <Low/Medium/High>
 #     - short summary: <one line>
 
@@ -240,7 +218,6 @@ Short Summary:
 #     registered_number = os.getenv("REGISTERED_NUMBER")  
 
 #     try:
-<<<<<<< HEAD
 #         message = f"""
 # 📢 *New Hostel Complaint*
 
@@ -267,12 +244,10 @@ Short Summary:
 #             to_number=registered_number
 #         )
 
-=======
 #         send_whatsapp(
 #             f"New Hostel Complaint:\n{data['description']}\n\n{ai_result}",
 #             to_number=registered_number
 #         )
->>>>>>> muskan-feature
 #         db.collection("complaints").document(complaint_id).update({
 #             "whatsappSent": True
 #         })
@@ -285,10 +260,5 @@ Short Summary:
 
 #     return {
 #         "status": "ok",
-<<<<<<< HEAD
-    #     "complaint_id": complaint_id
-    # }
-=======
 #         "complaint_id": complaint_id
 #     }
->>>>>>> muskan-feature
