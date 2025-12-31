@@ -28,7 +28,7 @@ credentials = service_account.Credentials.from_service_account_file(
 db = firestore.Client(credentials=credentials,project=credentials.project_id
 )
 
-
+print("🔥 FIRESTORE PROJECT:", credentials.project_id)
 
 # ----------------------------------------------------------------------
 
