@@ -28,7 +28,7 @@ credentials = service_account.Credentials.from_service_account_file(
 db = firestore.Client(credentials=credentials,project=credentials.project_id
 )
 
-
+print("🔥 FIRESTORE PROJECT:", credentials.project_id)
 
 # ----------------------------------------------------------------------
 
@@ -113,10 +113,6 @@ Short Summary:
 
 ⏰ Reported at: {datetime.utcnow().strftime('%d %b %Y, %I:%M %p')} UTC
 
-✅ To update status, reply with:
-- DONE
-- IN PROGRESS
-- NOT DONE
 """
 
         send_whatsapp(
@@ -139,10 +135,6 @@ Short Summary:
         "status": "ok",
         "complaint_id": complaint_id
     }
-
-
-
-
 
 
 # import os
@@ -222,6 +214,32 @@ Short Summary:
 #     registered_number = os.getenv("REGISTERED_NUMBER")  
 
 #     try:
+#         message = f"""
+# 📢 *New Hostel Complaint*
+
+# 👤 Student: {data['studentName']}
+# 🏠 Room: {data['roomNumber']}
+# 📂 Category: {data['category']}
+
+# 📝 Issue:
+# {data['description']}
+
+# Short Summary:
+# {ai_result}
+
+# ⏰ Reported at: {datetime.utcnow().strftime('%d %b %Y, %I:%M %p')} UTC
+
+# ✅ To update status, reply with one of:
+# - DONE 
+# - IN PROGRESS 
+# - NOT DONE 
+# """
+
+#         send_whatsapp(
+#             message.strip(),
+#             to_number=registered_number
+#         )
+
 #         send_whatsapp(
 #             f"New Hostel Complaint:\n{data['description']}\n\n{ai_result}",
 #             to_number=registered_number
