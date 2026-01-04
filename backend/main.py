@@ -1,5 +1,7 @@
 import os
 import json
+import pytz
+
 from dotenv import load_dotenv
 from datetime import datetime
 
@@ -46,13 +48,15 @@ app.add_middleware(
 
 # -------------------- 📦 FIRESTORE HELPER --------------------
 
+from datetime import datetime, timezone
+
 def add_complaint(data):
     return db.collection("complaints").add({
         "studentName": data["studentName"],
         "roomNumber": data["roomNumber"],
         "category": data["category"],
         "description": data["description"],
-        "createdAt": datetime.utcnow(),
+        "createdAt": datetime.now(timezone.utc),
         "status": "pending",
         "summary": "",
         "whatsappSent": False,
@@ -94,6 +98,16 @@ Complaint: {data["description"]}
         "aiProcessed": True
     })
 
+    # 4️⃣ FETCH complaint to get createdAt
+    complaint_doc = db.collection("complaints").document(complaint_id).get()
+    complaint = complaint_doc.to_dict()
+
+    timestamp = complaint["createdAt"]
+    ist = pytz.timezone("Asia/Kolkata")
+    reported_time = timestamp.astimezone(ist).strftime(
+        "%d %b %Y, %I:%M %p IST"
+    )
+
     # 4️⃣ WhatsApp Notification
     registered_number = os.getenv("REGISTERED_NUMBER")
 
@@ -111,8 +125,7 @@ Complaint: {data["description"]}
 Short Summary:
 {ai_result}
 
-⏰ Reported at: {datetime.utcnow().strftime('%d %b %Y, %I:%M %p')} UTC
-
+⏰ Reported at: {reported_time}
 """
 
         send_whatsapp(
