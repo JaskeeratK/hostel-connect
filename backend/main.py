@@ -113,10 +113,6 @@ Short Summary:
 
 ⏰ Reported at: {datetime.utcnow().strftime('%d %b %Y, %I:%M %p')} UTC
 
-✅ To update status, reply with:
-- DONE
-- IN PROGRESS
-- NOT DONE
 """
 
         send_whatsapp(
