@@ -1,11 +1,11 @@
-# 🏠 Connstel
+# Connstel
 
 A comprehensive hostel management system designed to streamline hostel operations and enhance communication between hostel administrators, wardens, and residents.
 
 ---
 ## Live Demo at [Connstel](https://hostel-connect-frontend.onrender.com/)
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
@@ -13,11 +13,11 @@ A comprehensive hostel management system designed to streamline hostel operation
 - [Project Structure](#project-structure)
 - [Contributors](#contributors)
 
-## 🌟 Overview
+## Overview
 
 Hostel Connect is a full-stack web application that simplifies hostel management by providing tools for room allocation, resident management, complaint handling, and administrative tasks. The platform aims to reduce paperwork and improve efficiency in hostel operations.
 
-## ✨ Features
+## Features
 
 - Students can submit hostel complaints with details like name, room number, category, and description.
 -  All complaints are securely stored in Google Firestore with timestamps.
@@ -26,7 +26,7 @@ Hostel Connect is a full-stack web application that simplifies hostel management
 - Instant WhatsApp alerts notify hostel authorities when a new complaint is registered.
 - Built with FastAPI, enabling easy integration with future dashboards or mobile apps.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 - HTML5
@@ -39,7 +39,7 @@ Hostel Connect is a full-stack web application that simplifies hostel management
 ### Database
 - Firebase(Cloud)
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 hostel-connect/
@@ -58,7 +58,7 @@ hostel-connect/
 └── README.md
 ```
 
-## 👥 Contributors
+## Contributors
 
 <table>
   <tr>
