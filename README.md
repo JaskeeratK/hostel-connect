@@ -15,7 +15,7 @@ A comprehensive hostel management system designed to streamline hostel operation
 
 ## Overview
 
-Hostel Connect is a full-stack web application that simplifies hostel management by providing tools for room allocation, resident management, complaint handling, and administrative tasks. The platform aims to reduce paperwork and improve efficiency in hostel operations.
+Hostel Connect is a full-stack web application that simplifies hostel management by handling residents' complaints. The platform aims to reduce paperwork and improve efficiency in hostel operations.
 
 ## Features
 
